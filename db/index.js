@@ -4,12 +4,15 @@ module.exports = {
   getDepartments() {
     return connection.query("SELECT * FROM department");
   },
+
   getRoles() {
     return connection.query("SELECT * FROM role");
   },
+
   getEmployees() {
     return connection.query("SELECT * FROM employee");
   },
+
   newRole({title, salary, department_id}) {
     console.log({title, salary, department_id});
     return connection.query("INSERT INTO role SET ?",
@@ -19,6 +22,7 @@ module.exports = {
       department_id
     });
   },
+
   newEmployee({first_name, last_name, role_id, manager_id}) {
     console.log({first_name, last_name, role_id, manager_id});
     return connection.query("INSERT INTO employee SET ?",
@@ -29,8 +33,17 @@ module.exports = {
       manager_id
     });
   },
+
   newDepartment(data) {
     console.log(data);
     return connection.query("INSERT INTO department SET ?", [data]);
+  },
+
+  newEmployeeRole({role_id, id}) {
+    console.log({role_id, id});
+    return connection.query("UPDATE employee SET ? WHERE ?", [
+      {role_id},
+      {id}
+    ])
   },
 }

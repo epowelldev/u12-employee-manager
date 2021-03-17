@@ -1,7 +1,7 @@
 const db = require("./db/index");
 const inquirer = require("inquirer");
 const connection = require("./db/connection");
-const { newRole, newDepartment, newEmployee } = require("./db/index");
+const { newRole, newDepartment, newEmployee, newEmployeeRole } = require("./db/index");
 
 function askForAction() {
   console.log("");
@@ -119,8 +119,6 @@ function addEmployee() {
             name: `${employee.first_name} ${employee.last_name}`
           }))
 
-          console.log(employeeChoices);
-
             inquirer
               .prompt([
                 {
@@ -190,9 +188,42 @@ function addRole() {
 }
 
 function updateEmployeeRole() {
+  db
+    .getRoles()
+    .then((roles) => {
+      const roleChoices = roles.map((role) => ({
+          value: role.id,
+          name: role.title
+      }))
 
-  // console.log("\n Employee Role Updated. \n");
-  // askForAction();
+      db
+        .getEmployees()
+        .then((employees) => {
+          const employeeChoices = employees.map((employee) => ({
+            value: employee.id,
+            name: `${employee.first_name} ${employee.last_name}`
+          }))
+          inquirer
+              .prompt([
+                {
+                  message: "Choose a manager:",
+                  name: "id",
+                  type: "list",
+                  choices: employeeChoices
+                },
+                {
+                  message: "Choose a new job for employee:",
+                  name: "role_id",
+                  type: "list",
+                  choices: roleChoices
+                }])
+              .then((results) => {
+                newEmployeeRole(results);
+                console.log("\n Employee Role Updated. \n");
+                askForAction();
+              }).catch((error) => console.log(error));
+            }).catch((error) => console.log(error));
+      }).catch((error) => console.log(error));
 }
 
 askForAction();
