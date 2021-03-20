@@ -20,10 +20,10 @@ You can also update employees.
 
 ### Example Output
 
-The following example shows the application running in 3 stages.
-
-![Image of Working Application](./images/example-output.png "Screenshot of Application")
+![Working Application](./assets/u12-employee-manager-demo.mp4)
 
 ### Links
 
 [GitHub Repo](https://github.com/epowelldev/u12-employee-manager)
+
+[Demo Link](https://drive.google.com/file/d/1Wc9rpShPvzWtds9YG3NEeSVrJsWkQVsR/view)
