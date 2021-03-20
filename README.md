@@ -20,7 +20,7 @@ You can also update employees.
 
 ### Example Output
 
-![Working Application](https://drive.google.com/file/d/1Wc9rpShPvzWtds9YG3NEeSVrJsWkQVsR/view)
+[Link to Video of Working Application](https://drive.google.com/file/d/1Wc9rpShPvzWtds9YG3NEeSVrJsWkQVsR/view)
 
 ### Links
 
